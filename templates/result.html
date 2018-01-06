@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+{% if is_done == True %}
+
+<section class="hero is-success">
+    <div class="hero-body">
+      <div class="container text-center">
+        <div id="nn_results_name">
+            <figure class="image is-128x128" style="margin:0 auto;">
+                <img src="{{artist_url_nn}}" width="128px" height="128px" class="rounded" style="border:1px solid black;">
+            </figure>
+            <br>
+            <h1 class="title">
+                Your Song sounds like {{ pred_nn }}'s Style 
+            </h1>
+        </div>
+        <div id="svm_results_name">
+            <figure class="image is-128x128" style="margin:0 auto;">
+                <img src="{{artist_url_svm}}" width="128px" height="128px" class="rounded" style="border:1px solid black;">
+            </figure>
+            <br>
+            <h1 class="title">
+                Your Song sounds like {{ pred_svm }}'s Style
+            </h1>
+        </div>
+        <h2 class="subtitle">
+            <a href="/">Test another one</a>
+        </h2>
+
+      </div>
+    </div>
+
+
+
+    <div class="tabs is-large is-centered is-boxed">
+        <ul>
+          <li onclick="clickNN()" id="btnNN" class="is-active"><a>Neural Network</a></li>
+          <li onclick="clickSVM()" id="btnSVM"><a>SVM</a></li>
+        </ul>
+      </div>
+
+
+</section>
+
+<br><br>
+<div class="container">
+    <div id="nn_results_percent">
+
+            <h1 class="subtitle text-center">Statistics of your Song Prediction</h1>
+
+            <div class="pred-percent">
+                <nav class="level">
+                    <div class="level-left level-item">Taylor Swift</div>
+                    <div class="level-right level-item">Probability is {{s_taylor}}%</div>
+                </nav>
+                <progress class="progress is-primary is-medium" value="{{s_taylor}}" max="100">{{s_taylor}}%</progress>
+        
+        
+                <nav class="level">
+                    <div class="level-left level-item">Michael Jackson</div>
+                    <div class="level-right level-item">Probability is {{s_michael}}%</div>
+                </nav>
+                <progress class="progress is-link is-medium" value="{{s_michael}}" max="100">{{s_michael}}%</progress>
+        
+        
+                <nav class="level">
+                    <div class="level-left level-item">Ed Sheeran</div>
+                    <div class="level-right level-item">Probability is {{s_ed}}%</div>
+                    </nav>
+                <progress class="progress is-info is-medium" value="{{s_ed}}" max="100">{{s_ed}}%</progress>
+        
+        
+                <nav class="level">
+                    <div class="level-left level-item">Ariana Grande</div>
+                    <div class="level-right level-item">Probability is {{s_ariana}}%</div>
+                    </nav>
+                <progress class="progress is-success is-medium" value="{{s_ariana}}" max="100">{{s_ariana}}%</progress>
+                <br>
+                <div class="has-text-centered">
+                <a href="/delete?hash={{hash}}" class="button is-danger is-outlined">Delete Result</a>
+            </div>
+            </div>
+
+
+    </div>
+
+    <div id="svm_results">
+            <div class="has-text-centered">
+                <p>
+                    Sorry the SVM can't show Probabilities.
+                </p>
+                <br>
+                    <a href="/delete?hash={{hash}}" class="button is-danger is-outlined">Delete Result</a>
+             </div>
+    </div>
+     
+    
+    
+</div>
+
+{% else %}
+<section class="hero is-large is-danger">
+    <div class="hero-body">
+      <div class="container text-center">
+        
+        <h1 class="title">
+          Your Song is still processing
+        </h1>
+        <h2 class="subtitle">
+            <a onclick="window.location = window.location.href;">Refresh this Page</a>
+        </h2>
+
+      </div>
+    </div>
+</section>
+
+
+
+{% endif %}
+
+<script>
+$( document ).ready(function() {
+    $('#svm_results').hide()
+    $('#svm_results_name').hide()
+});
+
+function clickNN() {
+    $('#svm_results').hide()
+    $('#svm_results_name').hide()
+    $('#nn_results_percent').show()
+    $('#nn_results_name').show()
+
+    $('#btnNN').addClass('is-active')
+    $('#btnSVM').removeClass('is-active')
+}
+
+function clickSVM() {
+    $('#svm_results').show()
+    $('#svm_results_name').show()
+    $('#nn_results_percent').hide()
+    $('#nn_results_name').hide()
+
+    $('#btnNN').removeClass('is-active')
+    $('#btnSVM').addClass('is-active')
+}
+</script>
+
+{% endblock %}

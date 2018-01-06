@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+  <head>
+    <title>TMEA Audio Classification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/file-upload.css') }}">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+      <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            TMEA Audio
+          </a>
+
+          <a class="navbar-item" href="/about">
+            How it works
+          </a>
+
+        </div>
+
+
+       <!-- <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <a class="button is-dark" href="https://github.com/jgthms/bulma/archive/0.5.1.zip">
+                    <span class="icon">
+                      <i class="fa fa-github"></i>
+                    </span>
+                    <span>View Sourcecode</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>-->
+
+
+
+      </nav>
+
+      {% block content %}
+      {% endblock %}
+    
+
+      <footer class="footer">
+          <div class="container">
+            <div class="content has-text-centered">
+              <p>
+                <strong>TMEA Audio</strong> by <a href="https://thoughtful-dev.com">ThoughtfulDev</a> | Made with <span class="icon" style="color:red;"><i class="fa fa-heart"></i> </span>
+              </p>
+            </div>
+          </div>
+        </footer>
+
+      
+        <script src="{{ url_for('static', filename='js/file-upload.js') }}"></script>
+  </body>
+</html>

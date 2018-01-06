@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="container container-about">
+    <h1 class="title">What does TMEA mean?</h1>
+    <hr>
+    <b>T</b><i>aylor Swift</i>
+    <br>
+    <b>M</b><i>ichael Jackson</i>
+    <br>
+    <b>E</b><i>d Sheeran</i>
+    <br>
+    <b>A</b><i>riana Grande</i>
+    <br>
+
+    <br>
+
+
+    <h1 class="title">How it works</h1>
+    <hr>
+    <p>
+    It's actually pretty simple...No really! <br>
+    I trained a CNN(Convolutional Neural Network) with Songs of Taylor Swift, Michael Jackson, Ed Sheeran and Ariana Grande.
+    </p>
+    <br>
+    <h2 class="subtitle">But how???</h2>
+    <p>
+    First we load each Song using <a href="https://github.com/librosa/librosa">librosa</a>.
+    After this we extract 100 <b>Mel Frequency Cepstral Coefficients</b> from the Original Song and from 4 Variations of the Song.
+    The Variations include <i>Time stretching, pitching, noise, dynamic range change</i>.<br>
+    I wont show Code for the Variations here.
+    <br><br>
+    Code Example: <br>
+    <code>
+    import librosa
+    N = 100
+    song, sample_rate = librosa.load('sample.mp3')
+    mfccs = librosa.feature.mfcc(y=song, sr=sample_rate, n_mfcc=N)
+    </code>
+    </p>
+    <br>
+    <h2 class="subtitle">Our CNN</h2>
+    <hr>
+    <b>Accuracy is ~93%</b> <br>
+    Here is a Picture of our Model which was made with <a href="https://keras.io/">Keras</a> <br>
+    <img src="{{ url_for('static', filename='img/model.png') }}"> <br>
+    As you can see there is a lot of Convolution happening (it's a <b>C</b>NN - what did you expect?). <br>
+    The CNN takes a Tensor of Shape <i>(10,10,1)</i> but our Data which we gathered using <i>mfcc</i> is (1, 100) per Sample.
+    <br>
+    Solution: Just reshape (duhh) <br>
+    <code>
+    import numpy as np
+    ......
+    new_data = data.reshape(-1, 10, 10, 1)
+    </code>
+    <br>
+    The output is just a 4 Dimensional Tensor/Vector with a <b>One-Hot Encoding</b>. <br>
+    e.g [1, 0, 0, 0] => Taylor Swift, [0,1,0,0] => Michael Jackson and so on...
+    <br>
+    <br>
+    Thats it! I'm done <span class="icon" style="color:red;"><i class="fa fa-heart"></i> </span>
+
+
+</div>
+
+{% endblock %}

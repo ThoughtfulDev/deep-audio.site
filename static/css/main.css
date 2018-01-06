@@ -1,0 +1,56 @@
+html {
+    background-color:#f4f4f4;
+}
+
+body {
+    
+}
+
+.predict-btn {
+    cursor: pointer; 
+    display: inline-block; 
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 11px 20px; 
+    border: none;
+    margin-left: -1px;  
+    background-color:#4caf50;
+    float: left; /* IE 9 Fix */
+}
+
+.text-center {
+    text-align:center;
+}
+
+.rounded {
+    border-radius:50%;
+}
+
+.pred-percent {
+    margin:0 auto;
+    max-width:600px;
+    width:100%;
+}
+
+.container-about {
+    max-width:1100px;
+    width:100%;
+    min-height:300px;
+    background-color:white;
+    color: black;
+    margin:0px auto;
+    padding-top: 30px;
+    padding-bottom:20px;
+    padding-left:30px;
+    padding-right:30px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+code {
+    padding:0px;
+    display: block;
+    white-space: pre-wrap;  
+}​

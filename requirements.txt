@@ -1,0 +1,7 @@
+numpy
+librosa
+h5py
+keras
+flask
+werkzeug
+sklearn
