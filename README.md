@@ -24,7 +24,7 @@ e.g
 ### Linux
 `$ sudo apt install ffmpeg`
 ### Windows
-Install some codecs of something... i have no Idea sry...
+Install some codecs or something... i have no Idea sry...
 
 ## Using
 ### Pretrained Model
