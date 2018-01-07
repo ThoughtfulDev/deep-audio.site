@@ -2,6 +2,21 @@ from librosa import load
 from librosa.effects import (pitch_shift, time_stretch)
 from librosa.feature import mfcc
 import numpy as np
+from sklearn.utils import shuffle
+
+
+def make_train_and_test_set(data_x, data_y, testing_size):
+    data_x, data_y = shuffle(data_x, data_y, random_state=0)
+    testing_size = int(round(data_x.shape[0] * testing_size))
+
+    print("Training Size is {0}".format(data_x.shape[0] - testing_size))
+    print("Testing Size is {0}".format(testing_size))
+
+    train_x = np.matrix(data_x[:-testing_size])
+    train_y = np.matrix(data_y[:-testing_size])
+    test_x = np.matrix(data_x[-testing_size:])
+    test_y = np.matrix(data_y[-testing_size:])
+    return train_x, train_y, test_x, test_y
 
 class AudioSample:
     def __init__(self, path, res_type='kaiser_fast'):
@@ -57,3 +72,5 @@ class AudioSample:
             self.X = np.pad(self.X,(start,0),mode='constant')[0:self.X.shape[0]]
         else:
             self.X = np.pad(self.X,(0,-start),mode='constant')[0:self.X.shape[0]]
+
+

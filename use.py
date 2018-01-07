@@ -1,7 +1,7 @@
 import librosa
 import numpy as np
 from keras.models import load_model
-from sound_util import AudioSample
+from util import (AudioSample, make_train_and_test_set)
 from sklearn.externals import joblib
 import json
 

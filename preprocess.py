@@ -1,7 +1,7 @@
 import numpy as np
 import librosa
 from pathlib import Path
-from sound_util import AudioSample
+from util import AudioSample
 
 def process(path, features, labels):
     #add label

@@ -1,5 +1,5 @@
 import numpy as np
-from model import make_train_and_test_set
+from util import make_train_and_test_set
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from sklearn.externals import joblib

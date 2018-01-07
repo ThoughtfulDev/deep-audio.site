@@ -41,7 +41,7 @@ python use.py <filename>
 ### Training your own Model
 1. Add the Songs to the corresponding Folders in *.data/taylor_swift, ./data/ariana_grande* etc...
 2. `$ python preprocess.py` (This will take some time)
-3. `$ python train.py` (to train the neural network)
+3. `$ python nn_train.py` (to train the neural network)
 4. `$ python svm_train.py` (to train the SVM)
 5. `$ python Web.py OR python use.py <filename>`
 
