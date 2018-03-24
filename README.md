@@ -1,9 +1,5 @@
 # deep-audio.site
 
-**TL;DR: Does your Song sound like Taylor Swift, Michael Jackson, Ed Sheeran or Ariana Grande? [Find out now](http://deep-audio.site)!**
-
-Explanation is [here](http://deep-audio.site/about).
-
 ## How to
 
 (Optional create a virtualenv)
